@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>nini
+    </title>
+
+
+    <style>
+
+        /* ================================
+           RESET
+        ================================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+
+        body {
+            background: #000;
+            color: #fff;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            overflow: hidden;
+        }
+
+
+        /* ================================
+           MAIN PAGE
+        ================================= */
+
+        .page {
+            width: 100%;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+
+            position: relative;
+        }
+
+
+        .profile-container {
+
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            /*
+                CHANGE THIS NUMBER TO MOVE
+                THE WHOLE PROFILE UP/DOWN
+            */
+
+            padding-top: 312px;
+        }
+
+
+        /* ================================
+           PROFILE IMAGE
+        ================================= */
+
+        .profile {
+
+            width: 80px;
+            height: 80px;
+
+            border-radius: 50%;
+
+            overflow: hidden;
+
+            background: #111;
+
+            flex-shrink: 0;
+        }
+
+
+        .profile img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        /* ================================
+           NAME
+        ================================= */
+
+        .name {
+
+            margin-top: 25px;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            color: #fff;
+
+            line-height: 1;
+        }
+
+
+        /* ================================
+           TYPEWRITER TEXT
+        ================================= */
+
+        .typewriter {
+
+            margin-top: 10px;
+
+            height: 20px;
+
+            color: #999;
+
+            font-size: 14px;
+
+            font-weight: 500;
+
+            cursor: pointer;
+
+            text-align: center;
+
+            transition: .2s ease;
+
+            text-shadow:
+                0 0 4px rgba(255,255,255,.15);
+        }
+
+
+        .typewriter:hover {
+
+            color: #fff;
+
+            text-shadow:
+                0 0 5px rgba(255,255,255,.7),
+                0 0 12px rgba(255,255,255,.25);
+        }
+
+
+        /* blinking cursor */
+
+        .cursor {
+
+            display: inline-block;
+
+            width: 1px;
+
+            height: 14px;
+
+            margin-left: 2px;
+
+            background: #fff;
+
+            vertical-align: -2px;
+
+            animation: blink .8s infinite;
+        }
+
+
+        @keyframes blink {
+
+            0%,
+            45% {
+                opacity: 1;
+            }
+
+            46%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+        /* ================================
+           SOCIAL ICONS
+        ================================= */
+
+        .socials {
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 42px;
+
+            margin-top: 43px;
+
+            opacity: 1;
+
+            transition:
+                opacity .4s ease,
+                transform .4s ease;
+        }
+
+
+        .social {
+
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            color: #fff;
+
+            text-decoration: none;
+
+            cursor: pointer;
+
+            filter:
+                drop-shadow(0 0 4px rgba(255,255,255,.8))
+                drop-shadow(0 0 9px rgba(255,255,255,.35));
+
+            transition:
+                transform .2s ease,
+                filter .2s ease;
+        }
+
+
+        .social:hover {
+
+            transform:
+                translateY(-4px)
+                scale(1.08);
+
+            filter:
+                drop-shadow(0 0 6px rgba(255,255,255,1))
+                drop-shadow(0 0 15px rgba(255,255,255,.55));
+        }
+
+
+        .social svg {
+
+            width: 27px;
+            height: 27px;
+
+            fill: currentColor;
+        }
+
+
+        /* X ICON */
+
+        .x-icon {
+
+            font-size: 30px;
+
+            font-weight: 300;
+
+            line-height: 1;
+        }
+
+
+        /* ================================
+           COMMUNITY CARD
+        ================================= */
+
+        .community-card {
+
+            width: 384px;
+            height: 83px;
+
+            margin-top: 24px;
+
+            border: 1px solid #242428;
+
+            border-radius: 16px;
+
+            background: #030303;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 11px 18px;
+
+            box-shadow:
+                0 8px 30px rgba(0,0,0,.7);
+
+            transition:
+                border-color .2s ease,
+                transform .2s ease;
+        }
+
+
+        .community-card:hover {
+
+            border-color: #3a3a40;
+
+            transform: translateY(-1px);
+        }
+
+
+        /* ================================
+           COMMUNITY IMAGE
+        ================================= */
+
+        .community-image {
+
+            width: 56px;
+            height: 56px;
+
+            border-radius: 13px;
+
+            overflow: hidden;
+
+            flex-shrink: 0;
+
+            background: #fff;
+        }
+
+
+        .community-image img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        /* ================================
+           COMMUNITY TEXT
+        ================================= */
+
+        .community-info {
+
+            flex: 1;
+
+            margin-left: 16px;
+
+            min-width: 0;
+        }
+
+
+        .community-name {
+
+            color: #fff;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            margin-bottom: 5px;
+        }
+
+
+        .community-stats {
+
+            color: #999;
+
+            font-size: 13px;
+
+            font-weight: 500;
+
+            white-space: nowrap;
+        }
+
+
+        /* ================================
+           JOIN BUTTON
+        ================================= */
+
+        .join {
+
+            border: none;
+
+            background: transparent;
+
+            color: #fff;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            padding: 12px 18px;
+
+            text-shadow:
+                0 0 5px rgba(255,255,255,.8),
+                0 0 12px rgba(255,255,255,.25);
+
+            transition:
+                transform .2s ease,
+                text-shadow .2s ease;
+        }
+
+
+        .join:hover {
+
+            transform: scale(1.08);
+
+            text-shadow:
+                0 0 7px rgba(255,255,255,1),
+                0 0 18px rgba(255,255,255,.5);
+        }
+
+
+        /* ================================
+           MUSIC PLAYER
+        ================================= */
+
+        .music-player {
+
+            position: fixed;
+
+            left: 30px;
+            bottom: 25px;
+
+            height: 30px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+        }
+
+
+        .play-button {
+
+            width: 27px;
+            height: 27px;
+
+            border-radius: 50%;
+
+            border: 2px solid #fff;
+
+            background: #000;
+
+            color: #fff;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            font-size: 10px;
+
+            box-shadow:
+                0 0 5px rgba(255,255,255,.8);
+
+            transition: .2s ease;
+        }
+
+
+        .play-button:hover {
+
+            transform: scale(1.08);
+
+            box-shadow:
+                0 0 10px rgba(255,255,255,1);
+        }
+
+
+        /* volume slider */
+
+        .volume {
+
+            width: 65px;
+
+            appearance: none;
+
+            height: 4px;
+
+            border-radius: 5px;
+
+            background: #fff;
+
+            outline: none;
+
+            cursor: pointer;
+        }
+
+
+        .volume::-webkit-slider-thumb {
+
+            appearance: none;
+
+            width: 11px;
+            height: 11px;
+
+            border-radius: 50%;
+
+            background: #fff;
+
+            cursor: pointer;
+        }
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 600px) {
+
+            .profile-container {
+
+                padding-top: 220px;
+            }
+
+
+            .socials {
+
+                gap: 25px;
+            }
+
+
+            .community-card {
+
+                width:
+                    calc(100% - 40px);
+
+                max-width: 384px;
+            }
+
+
+            .music-player {
+
+                left: 20px;
+                bottom: 20px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="page">
+
+
+        <section class="profile-container">
+
+
+            <!-- ==========================
+                 PROFILE
+            =========================== -->
+
+            <div class="profile">
+
+                <img
+                    src="profile.jpg"
+                    alt="niyah profile"
+                >
+
+            </div>
+
+
+            <!-- ==========================
+                 NAME
+            =========================== -->
+
+            <div class="name">
+                hi im niyah
+            </div>
+
+
+            <!-- ==========================
+                 TYPEWRITER
+            =========================== -->
+
+            <div
+                class="typewriter"
+                id="typewriter"
+            >
+
+                <span id="typed-text"></span>
+
+                <span class="cursor"></span>
+
+            </div>
+
+
+            <!-- ==========================
+                 SOCIALS
+            =========================== -->
+
+            <div class="socials">
+
+
+                <!-- TWITCH -->
+
+                <a
+                    class="social"
+                    href="https://www.twitch.tv/nlya"
+                    aria-label="Twitch"
+                    target="_blank"
+                >
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path d="
+                        M3 2h18v13l-5 5h-4l-3 3v-3H3V2zm2 2v13h5v2l2-2h4l3-3V4H5zm4 3h2v5H9V7zm5 0h2v5h-2V7z
+                        "/>
+
+                    </svg>
+
+                </a>
+
+
+
+                <!-- X -->
+
+                <a
+                    class="social"
+                    href="https://x.com/tjaysforever"
+                    aria-label="X"
+                    target="_blank"
+                >
+
+                    <span class="x-icon">
+                        𝕏
+                    </span>
+
+                </a>
+
+
+
+
+                <!-- SPOTIFY -->
+
+                <a
+                    class="social"
+                    href="https://open.spotify.com/user/qxc8lljy4wslu1h2in3g6eexz?si=cd3311efa7b94a69"
+                    aria-label="Spotify"
+                    target="_blank"
+                >
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path d="
+                        M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.59 14.43a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.56-1.16a.75.75 0 1 1-.33-1.46c4.58-1.05 8.5-.6 11.67 1.34.35.22.46.68.25 1.03zm1.38-3.06a.94.94 0 0 1-1.29.31c-3.23-1.99-8.15-2.57-11.97-1.41a.94.94 0 1 1-.55-1.8c4.36-1.32 9.8-.68 13.5 1.6.43.26.57.83.31 1.3zm.12-3.2C14.22 7.9 8.01 7.7 4.4 8.8a1.13 1.13 0 1 1-.66-2.16c4.15-1.26 11.07-1.01 15.25 1.47a1.13 1.13 0 0 1-.9 2.06z
+                        "/>
+
+                    </svg>
+
+                </a>
+
+            </div>
+
+
+            <!-- ==========================
+                 COMMUNITY
+            =========================== -->
+
+            <div class="community-card">
+
+
+                <div class="community-image">
+
+                    <img
+                        src="community.jpg"
+                        alt=""
+                    >
+
+                </div>
+
+
+                <div class="community-info">
+
+                    <div class="community-name">
+                        foreversoon
+                    </div>
+
+                    <div class="community-stats">
+                        8 online • 23 total
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="join"
+                    onclick="joinCommunity()"
+                >
+                    join
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ================================
+         MUSIC PLAYER
+    ================================= -->
+
+    <div class="music-player">
+
+
+        <button
+            class="play-button"
+            id="playButton"
+        >
+            ▶
+        </button>
+
+
+        <input
+            class="volume"
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+            id="volume"
+        >
+
+
+        <audio
+            id="audio"
+            src="music.mp3"
+            loop
+        ></audio>
+
+
+    </div>
+
+
+    <script>
+
+
+        /* ================================
+           TYPEWRITER
+        ================================= */
+
+        const text =
+            "thx for being here ♡";
+
+        const typedText =
+            document.getElementById("typed-text");
+
+
+        let index = 0;
+
+
+        function typeWriter() {
+
+            if (index < text.length) {
+
+                typedText.textContent +=
+                    text.charAt(index);
+
+                index++;
+
+                setTimeout(
+                    typeWriter,
+                    75
+                );
+
+            }
+
+        }
+
+
+        typeWriter();
+
+
+        /* ================================
+           MUSIC
+        ================================= */
+
+        const audio =
+            document.getElementById("audio");
+
+        const playButton =
+            document.getElementById("playButton");
+
+
+        let playing = false;
+
+
+        playButton.addEventListener(
+            "click",
+            function() {
+
+                if (playing) {
+
+                    audio.pause();
+
+                    playButton.textContent = "<3";
+
+                    playing = false;
+
+                } else {
+
+                    audio.play();
+
+                    playButton.textContent = "</3";
+
+                    playing = true;
+
+                }
+
+            }
+        );
+
+
+        /* ================================
+           VOLUME
+        ================================= */
+
+        const volume =
+            document.getElementById("volume");
+
+
+        volume.addEventListener(
+            "input",
+            function() {
+
+                audio.volume =
+                    volume.value / 100;
+
+            }
+        );
+
+
+        audio.volume = .5;
+
+
+        /* ================================
+           JOIN BUTTON
+        ================================= */
+
+        function joinCommunity() {
+
+            /*
+                CHANGE THIS TO YOUR
+                COMMUNITY INVITE
+            */
+
+            window.open(
+                "https://discord.gg/Pn5M2bN4P",
+                "_blank"
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
