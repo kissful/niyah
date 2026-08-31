@@ -770,42 +770,35 @@
 
 
     <script>
+const text = "thx for being here ♡";
+const typewriter = document.getElementById("typewriter");
 
+let i = 0;
 
-        /* ================================
-           TYPEWRITER
-        ================================= */
+function type() {
+    if (i < text.length) {
+        typewriter.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, 80);
+    } else {
+        // Wait 2 seconds after the sentence is finished
+        setTimeout(erase, 2000);
+    }
+}
 
-     const text =
-            "thx for being here ♡";
+function erase() {
+    if (i > 0) {
+        typewriter.textContent = text.substring(0, i - 1);
+        i--;
+        setTimeout(erase, 40);
+    } else {
+        // Wait half a second before typing again
+        setTimeout(type, 500);
+    }
+}
 
-        const typedText =
-            document.getElementById("typed-text");
-
-
-        let index = 0;
-
-
-        function typeWriter() {
-
-            if (index < text.length) {
-
-                typedText.textContent +=
-                    text.charAt(index);
-
-                index++;
-
-                setTimeout(
-                    typeWriter,
-                    75
-                );
-
-            }
-
-        }
-
-
-        typeWriter();
+type();
+</script>
         /* ================================
            MUSIC
         ================================= */
