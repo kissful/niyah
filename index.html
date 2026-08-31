@@ -769,30 +769,50 @@
     </div>
 
 
-    <script>
-const text = "thx for being here ♡";
+ <p id="typewriter"></p>
+
+<script>
+const messages = [
+    "welcome! >,.,<",
+    "thx for being here ♡"
+];
+
 const typewriter = document.getElementById("typewriter");
 
-let i = 0;
+let messageIndex = 0;
+let letterIndex = 0;
 
 function type() {
-    if (i < text.length) {
-        typewriter.textContent += text.charAt(i);
-        i++;
+    const message = messages[messageIndex];
+
+    if (letterIndex < message.length) {
+        typewriter.textContent += message[letterIndex];
+        letterIndex++;
+
         setTimeout(type, 80);
     } else {
-        // Wait 2 seconds after the sentence is finished
+        // Wait before deleting
         setTimeout(erase, 2000);
     }
 }
 
 function erase() {
-    if (i > 0) {
-        typewriter.textContent = text.substring(0, i - 1);
-        i--;
-        setTimeout(erase, 40);
+    if (letterIndex > 0) {
+        typewriter.textContent =
+            typewriter.textContent.substring(0, letterIndex - 1);
+
+        letterIndex--;
+
+        setTimeout(erase, 50);
     } else {
-        // Wait half a second before typing again
+        // Move to the next message
+        messageIndex++;
+
+        if (messageIndex >= messages.length) {
+            messageIndex = 0;
+        }
+
+        // Small pause before typing the next message
         setTimeout(type, 500);
     }
 }
